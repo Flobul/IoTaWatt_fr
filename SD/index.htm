@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <!-- version 0.6.1 -->
-<html lang="en-US">
+<html lang="fr-FR">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
-    <title>IoTaWatt Configuration app</title>
+    <title>Application de configuration IoTaWatt</title>
     <link rel="stylesheet" type="text/css" href="cnfstyle.css">
 
 </head>
@@ -13,7 +13,7 @@
 <body onload="setup()">
 
     <div id="outerContainer" class="color_outer">
-        <h3 id="heading">IoTaWatt Power Monitor</h3>
+        <h3 id="heading">Moniteur de puissance IoTaWatt</h3>
 
         <div id="mainMenu" class="menu color_menu" display="block">
 
@@ -28,55 +28,55 @@
                 </tr>
                 <tr>
                     <td class="dropdown">
-                        <button id="setupButton" class="mainMenuButton buttonUp dropbtn" title="Select setup category">Setup</button>
+                        <button id="setupButton" class="mainMenuButton buttonUp dropbtn" title="Sélectionnez une configuration">Configuration</button>
                         <span class="dropContent">
             <button class="mainMenuButton" onclick="mainMenuButton(this,configDevice)"
-                title="Specify device name, time-zone, and auto-update class">Device</button>
+                title="Spécifier le nom de l'appareil, le fuseau horaire et la classe de mise à jour automatique">Appareil</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,configInputs)"
-                title="Specify the VTs and CTs that are used">Inputs</button>
+                title="Spécifier les VT et CT utilisés">Entrées</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,configOutputs)"
-                title="Define output values for status display and local graphs">Outputs</button>
+                title="Définir les valeurs de sortie pour l'affichage de l'état et les graphiques locaux">Sorties</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,configIntegrators)"
-                title="Define Integrators to develop import/export values">Integrators</button>
+                title="Définir les intégrateurs pour développer les valeurs d'importation et d'exportation">Intégrateurs</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,buildWebServer)"
-                title="Specify data uploader(s) to external servers">Data Uploaders</button>
+                title="Spécifier le(s) téléchargeur(s) de données vers des serveurs externes">Serveurs de données</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,setProxy)" 
-                title="Specify optional proxy server for HTTPS">HTTPS Proxy Server</button>
+                title="Spécifier un serveur proxy optionnel pour HTTPS">Serveur proxy HTTPS</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,setPasswords)"
-                title="Set/Reset optional access passwords">Passwords</button>
+                title="Définir/réinitialiser les mots de passe d'accès optionnels">Mots de passe</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,configBurden)"
-                title="Set new values if stock resistors are modified/removed">Burden Resistors</button>
+                title="Définir de nouvelles valeurs si les résistances de série sont modifiées/supprimées">Résistances de charge</button>
           </span>
                     </td>
-                    <td><button class="mainMenuButton buttonUp" onclick="mainMenuButton(this,statusBegin)" title="Display current measurements, outputs and device status">Status</button></td>
+                    <td><button class="mainMenuButton buttonUp" onclick="mainMenuButton(this,statusBegin)" title="Affichage des mesures actuelles, des sorties et de l'état de l'appareil">Statut</button></td>
                 </tr>
                 <tr>
                     <td class="dropdown">
-                        <button id="toolsButton" class="mainMenuButton buttonUp dropbtn" title="Select from the following tools">Tools</button>
+                        <button id="toolsButton" class="mainMenuButton buttonUp dropbtn" title="Sélectionnez un outil">Outils</button>
                         <span class="dropContent">
             <button class="mainMenuButton" onclick="mainMenuButton(this,loadEdit)"
-                title="manage and edit files on the SDcard">File Manager and Editor</button>
+                title="Gérer et éditer des fichiers sur la carte SD">Gestionnaire et éditeur de fichiers</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,showMsgs)"
-                title="View recent entries in the message log">Message Log</button>
-            <button class="mainMenuButton" onclick="mainMenuButton(this,toolsWiFi)">WIFi</button>
+                title="Afficher les entrées récentes dans le journal des messages">Journal des messages</button>
+            <button class="mainMenuButton" onclick="mainMenuButton(this,toolsWiFi)">Wi-Fi</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,toolsRestart)"
-                title="Restart the IoTaWatt">Restart</button>
+                title="Redémarrer l'IoTaWatt">Rédémarrer</button>
                 
-       <!-- <button class="mainMenuButton" onclick="mainMenuButton(this,toolsDatalogs)">Datalogs</button>
-            <button class="mainMenuButton" onclick="mainMenuButton(this,toolsUpdate)">Software Update</button>
-            <button class="mainMenuButton" onclick="mainMenuButton(this,toolsPhase)">Phase Measurement</button> -->
+      <!-- <button class="mainMenuButton" onclick="mainMenuButton(this,toolsDatalogs)">Datalogs</button>
+            <button class="mainMenuButton" onclick="mainMenuButton(this,toolsUpdate)">Software Update</button> 
+             <button class="mainMenuButton" onclick="mainMenuButton(this,toolsPhase)">Phase Measurement</button> -->
             
           </span>
                     </td>
                     <td>
                         <span class="dropdown">
             <button id="dataButton" class="mainMenuButton buttonUp dropbtn"
-              title="Graphically visualize and compare accumulated data">Data</button>
+              title="Visualiser et comparer graphiquement les données accumulées">Données</button>
             <span class="dropContent">
               <button class="mainMenuButton" onclick="mainMenuButton(this,loadGraph2)"
-                  title="Enhanced graph utility">Graph+</button>
+                  title="Utilitaire graphique amélioré">Graph+</button>
               <button class="mainMenuButton" onclick="mainMenuButton(this,loadGraph)"
-                  title="Original graph utility">Original Graph</button>
+                  title="Utilitaire graphique original">Original Graph</button>
               
             </span>
                         </span>
@@ -108,11 +108,11 @@
             <!-- *************** Device configuration ******************-->
 
             <div id="configDevice" class="body color_body" style="display: none">
-                <h3>Configure IoTaWatt Device</h3>
+                <h3>Configuration de l'appareil IoTaWatt</h3>
                 <table id="deviceTable"></table>
                 <p>
-                    <button class="actionCancel" id="deviceCancel" onclick="deviceCancel()">cancel</button>
-                    <button class="actionSave" id="deviceSave" onclick="deviceSave()">save</button>
+                    <button class="actionCancel" id="deviceCancel" onclick="deviceCancel()">Annuler</button>
+                    <button class="actionSave" id="deviceSave" onclick="deviceSave()">Sauvegarder</button>
                 </p>
             </div>
 
@@ -120,12 +120,12 @@
 
             <div id="configInputs" class="body" style="display: none">
                 <div class="bodyDiv color_body" id="inputList">
-                    <h3>Inputs</h3>
+                    <h3>Entrées</h3>
                     <table id="inputTable">
                         <tbody id="inputTableBody"></tbody>
                     </table>
                     <div align="center">
-                        <input type="checkbox" id="derive3ph" onclick="derive3ph()" title="For 3-phase power with one voltage reference">Enable derived three-phase
+                        <input type="checkbox" id="derive3ph" onclick="derive3ph()" title="Pour une alimentation triphasée avec une référence de tension">Activer la dérivation triphasée
                     </div>
                 </div>
             </div>
@@ -134,9 +134,9 @@
                 <h3 id="inputChannel"></h3>
                 <table id="inputEditTable"></table>
                 <div>
-                    <button class="actionDelete" id="inputEditDelete" onclick="inputEditDelete()">delete</button>
-                    <button class="actionCancel" id="inputEditCancel" onclick="inputEditCancel()">cancel</button>
-                    <button class="actionSave" id="inputEditSave" onclick="inputEditSave()">save</button>
+                    <button class="actionDelete" id="inputEditDelete" onclick="inputEditDelete()">Supprimer</button>
+                    <button class="actionCancel" id="inputEditCancel" onclick="inputEditCancel()">Annuler</button>
+                    <button class="actionSave" id="inputEditSave" onclick="inputEditSave()">Sauvegarder</button>
                 </div>
             </div>
 
@@ -144,20 +144,20 @@
                 <h3 id="inputCalChannel"></h3>
                 <h1 id="inputCalVolts"></h1>
                 <p>
-                    <span>calibration factor: </span>
+                    <span>Facteur de calibrage : </span>
                     <input id="inputCalCal" type="number" onchange="inputCalCal(this)" min="5" max="300" step="0.01" width="100px"></p>
                 <p>
-                    <button class="actionCancel" onclick="calVTexit(this)">cancel</button>
-                    <button class="actionSave" onclick="calVTsave(this)">save</button>
+                    <button class="actionCancel" onclick="calVTexit(this)">Annuler</button>
+                    <button class="actionSave" onclick="calVTsave(this)">Sauvegarder</button>
                 </p>
-                <p>Using a voltmeter to display the AC line voltage, adjust the calibration factor until the displayed voltage reasonably matches the voltmeter reading. Click save to update the channel with the new calibration factor.</p>
+                <p>En utilisant un voltmètre pour afficher la tension alternative, ajustez le facteur d'étalonnage jusqu'à ce que la tension affichée corresponde raisonnablement à la lecture du voltmètre. Cliquer sur Sauvegarder pour mettre à jour le canal avec le nouveau facteur d'étalonnage..</p>
             </div>
 
             <!-- *************** Outputs configuration ******************-->
 
             <div id="configOutputs" class="body" style="display: none;">
                 <div class="bodyDiv color_body" id="divOutputs">
-                    <h3>Outputs</h3>
+                    <h3>Sorties</h3>
                     <table id="outputTable"></table>
                 </div>
             </div>
@@ -166,7 +166,7 @@
 
             <div id="configIntegrators" class="body" style="display: none;">
                 <div class="bodyDiv color_body" id="divIntegrators">
-                    <h3>Integrators</h3>
+                    <h3>Integrateurs</h3>
                     <table id="integratorsTable"></table>
                 </div>
             </div>
@@ -174,66 +174,66 @@
             <!-- *************** Burden configuration ******************-->
 
             <div id="configBurden" class="body color_body" style="display: none">
-                <h3>Specify on-board burden resistors</h3>
-                <p>Burden resistors are internal components that allow IoTaWatt to convert the input current to a voltage that can be measured. The factory supplied burden values were selected to work best with the range of CTs that can be connected and
-                    most users will never have a need to modify them or the corresponding values in this menu.</p>
-                <p>For the benefit of advanced users that have a need to remove or change the factory resistors, this menu has been provided so that a changed value can be specified and IoTaWatt can calculate the correct current using the new value.</p>
+                <h3>Spécifier les résistances de charge intégrées</h3>
+                <p>Les résistances de charge sont des composants internes qui permettent à l'IoTaWatt de convertir le courant d'entrée en une tension qui peut être mesurée. Les valeurs de charge fournies en usine ont été sélectionnées pour fonctionner au mieux avec la gamme de TC qui peuvent être connectés et la plupart des utilisateurs n'auront jamais besoin de les modifier ou de modifier les valeurs correspondantes dans ce menu.
+                    la plupart des utilisateurs n'auront jamais besoin de les modifier ou de modifier les valeurs correspondantes dans ce menu.</p>
+                <p>Pour les utilisateurs avancés qui ont besoin d'enlever ou de changer les résistances d'usine, ce menu a été fourni pour qu'une valeur modifiée puisse être spécifiée et que IoTaWatt puisse calculer le courant correct en utilisant la nouvelle valeur.</p>
                 <table id="burdenTable"></table>
                 <p>
-                    <button class="actionCancel" id="burdenCancel" onclick="burdenCancel()">cancel</button>
-                    <button class="actionSave" id="burdenSave" onclick="burdenSave()">save</button>
+                    <button class="actionCancel" id="burdenCancel" onclick="burdenCancel()">Annuler</button>
+                    <button class="actionSave" id="burdenSave" onclick="burdenSave()">Sauvegarder</button>
                 </p>
             </div>
 
             <!-- *************** Password configuration ******************-->
 
             <div id="setPasswords" class="body color_body" style="display: none">
-                <h3>Configure Optional IoTaWatt Passwords</h3>
+                <h3>Configuration facultative des mots de passe de l'IoTaWatt</h3>
                 <p>
-                    The initial configuration places no restrictions on who can modify or otherwise access the device. If the device is in a home and connected to a secure WiFi LAN, that may be adequate to protect the integrity of the device and privacy of the data collected.
-                    If the LAN does not provide suitable protection, or there is a need to provide port-forward passthough from the internet, access control is recommended.
+                    La configuration initiale n'impose aucune restriction quant aux personnes autorisées à modifier l'appareil ou à y accéder. Si l'appareil se trouve dans un domicile et qu'il est connecté à un réseau local Wi-Fi sécurisé, cela peut suffire à protéger l'intégrité de l'appareil et la confidentialité des données collectées.
+                    Si le réseau local n'offre pas de protection adéquate ou s'il est nécessaire d'assurer le passage d'un port à l'autre à partir de l'internet, il est recommandé de mettre en place un contrôle d'accès.
                 </p>
                 <p>
-                    IoTaWatt uses the cryptographic Digest authorization method that employs an encrypted password. Data is transfered in plaintext, but IoTaWatt will not accept unauthorized requests to view or change data when passwords are enabled. Given the limitations
-                    of an IoT device, you may find it is a reasonable balance between exposure and data value.
+                    IoTaWatt utilise la méthode d'autorisation cryptographique Digest qui emploie un mot de passe crypté. Les données sont transférées en clair, mais IoTaWatt n'accepte pas les demandes non autorisées de consultation ou de modification des données lorsque les mots de passe sont activés. Compte tenu des limites
+                    d'un appareil IoT, vous trouverez peut-être qu'il s'agit d'un équilibre raisonnable entre l'exposition et la valeur des données.
                 </p>
                 <p>
-                    To enable authorization, specify an admin password. Subsequently, all configuration and access, except for user level access described below, will require the password to initiate the session. Be sure to carefully note the password that you set, as IoTaWatt
-                    does not store the actual value and it cannot be recovered. There is a procedure to remove the password, but it involves physically removing the SDcard.
+                    Pour activer l'autorisation, spécifiez un mot de passe administrateur. Par la suite, toutes les configurations et tous les accès, à l'exception de l'accès au niveau utilisateur décrit ci-dessous, nécessiteront le mot de passe pour lancer la session. Veillez à noter soigneusement le mot de passe que vous définissez, car IoTaWatt
+                    ne stocke pas la valeur réelle et ne peut pas être récupérée. Il existe une procédure pour supprimer le mot de passe, mais elle implique de retirer physiquement la carte SD.
                 </p>
                 <p>
-                    The optional user password is effectively a <i>read only</i> password for use by apps that visualize data. The user password does not allow access to the configuration or SD file system, except for a special /user/ directory
+                    Le mot de passe utilisateur facultatif est en fait un mot de passe <i>en lecture seule</i> utilisé par les applications qui visualisent les données. Le mot de passe utilisateur ne permet pas d'accéder à la configuration ou au système de fichiers SD, à l'exception d'un répertoire spécial /user/.
                 </p>
                 <p>
-                    When "unrestricted local access" is checked, passwords will not be required for requests originating on the local LAN. They will be required only for requests that come from the internet gateway.
+                    Lorsque l'option "accès local illimité" est cochée, les mots de passe ne sont pas requis pour les demandes émanant du réseau local. Ils ne seront requis que pour les demandes provenant de la passerelle internet.
                 </p>
                 <table id="pwdTable"></table>
                 <p>
-                    <button class="actionCancel" id="pwdCancel" onclick="pwdCancel()">cancel</button>
-                    <button class="actionSave" id="pwdSave" onclick="pwdSave()">save</button>
-                    <button class="actionSave" id="pwdCheck" onclick="pwdValidate()">Validate Current Password</button>
+                    <button class="actionCancel" id="pwdCancel" onclick="pwdCancel()">Annuler</button>
+                    <button class="actionSave" id="pwdSave" onclick="pwdSave()">Sauvegarder</button>
+                    <button class="actionSave" id="pwdCheck" onclick="pwdValidate()">Valider le mot de passe actuel</button>
                 </p>
             </div>
 
             <!-- ************* Uploaders ********************-->
 
             <div class="body color_body" id="divWebServer" style="display:none">
-                <h3 id=serverHead>Setup Server Uploaders</h3>
+                <h3 id=serverHead>Configuration du serveur d'upload</h3>
                 <form>
                     <table id="serverTable"></table>
                 </form>
                 <div id="divInfluxTagSet" style="display:none">
-                    <h3>tag set</h3>
+                    <h3>Ajouter des tag</h3>
                     <table id="influxTagSet"></table>
                 </div>
                 <div id="divServerOutputs" style="display:none">
-                    <h3 id="serverOutputsHeader">Outputs</h3>
+                    <h3 id="serverOutputsHeader">Sorties</h3>
                     <table id="serverOutputs"></table>
                 </div>
                 <p>
-                    <button class="actionDelete" id="serverDelete">delete</button>
-                    <button class="actionCancel" id="serverCancel" onclick="serverCancel()">cancel</button>
-                    <button class="actionSave" id="serverSave" onclick="serverSave()">save</button>
+                    <button class="actionDelete" id="serverDelete">Supprimer</button>
+                    <button class="actionCancel" id="serverCancel" onclick="serverCancel()">Annuler</button>
+                    <button class="actionSave" id="serverSave" onclick="serverSave()">Sauvegarder</button>
                 </p>
             </div>
             
@@ -241,43 +241,45 @@
                   <!-- ************* Influx tags ********************--> 
     
             <div class="body color_body" id="divInfluxTag" style="display:none">
-              <h3>Edit influx tag</h3>
+              <h3>Modifier le tag influx</h3>
               <table width="80%">
-                <tr><th>tag key</th><th> </th><th>tag value</th></tr>
+                <tr><th>tag key</th><th> </th><th>valeur tag</th></tr>
                 <tr>
                   <td><input id="influxTagKey" oninput="influxTagCheck()"></td>
                   <td>=</td>
-                  <td><input id="influxTagValue" oninput="influxTagCheck()" title="enter a string or variable ($name, $units..)."></td>
+                  <td><input id="influxTagValue" oninput="influxTagCheck()" title="entrer une chaîne de caractères ou une variable ($name, $units..)."></td>
                 </tr>
               </table>
               
-              <p>Tags are optional key-value pairs of metadata that can be associated with the measurement.
-              Because they are indexed, queries on tags perform better than queries on fields.
+              <p>Les balises sont des paires clé-valeur facultatives de métadonnées qui peuvent être associées à la mesure.
+              Parce qu'elles sont indexées, les requêtes sur les balises sont plus performantes que les requêtes sur les champs.
               </p>
-              <p>When tags are specified, IoTaWatt assumes the first tag is unique to this measurement
-              and is referenced to determine the time of last measurement during restart recovery. 
-              In that way, an IoTaWatt can maintain context and continuity where multiple data
-              sources are writing to a single database.</p>
-              <p>Tag-values can be a fixed string, or one of the variables $device, $name, $units</p>
+              <p>Lorsque des balises sont spécifiées, IoTaWatt suppose que la première balise est unique pour cette mesure.
+              et est référencée pour déterminer l'heure de la dernière mesure lors de la reprise du redémarrage. 
+              De cette manière, un IoTaWatt peut maintenir le contexte et la continuité lorsque plusieurs sources de données écrivent dans une seule base de données.
+              sources de données multiples écrivent dans une seule base de données.
+              </p>
+              <p>Les valeurs d'étiquette peuvent être utilisées pour déterminer le contexte et la continuité.
+              Les valeurs d'étiquette peuvent être une chaîne fixe ou l'une des variables $device, $name, $units</p>.
               <p>
-                <button class="actionDelete" id="influxTagDelete">delete</button>
-                <button class="actionCancel" id="influxTagCancel" onclick="influxTagCancel()">cancel</button>
-                <button class="actionSave" id="influxTagSave">save</button>
+                <button class="actionDelete" id="influxTagDelete">Supprimer</button>
+                <button class="actionCancel" id="influxTagCancel" onclick="influxTagCancel()">Annuler</button>
+                <button class="actionSave" id="influxTagSave">Sauvegarder</button>
               </p>
             </div>
 
             <!-- ************* HTTPS Proxy Server ********************-->
 
             <div id="setProxy" class="body color_body" style="display:none">
-                <h3>Specify HTTPS Proxy Server</h3>
+                <h3>Spécifier le serveur proxy HTTPS</h3>
                 <p>
-                    Secure (HTTPS) internet connections are possible using a proxy server on the local LAN. Information about setting up an NGINX proxy server and using this feature are included in the <a href="https://docs.iotawatt.com" target="_blank">IoTaWatt online documentation</a>.<br><br>                    When you specify the URL of your proxy server here, uploaders and other services will use the proxy when https is specified.<br><br>
+                    Les connexions internet sécurisées (HTTPS) sont possibles en utilisant un serveur proxy sur le réseau local. Les informations relatives à la configuration d'un serveur proxy NGINX et à l'utilisation de cette fonctionnalité sont incluses dans le document <a href="https://docs.iotawatt.com" target="_blank">Documentation en ligne IoTaWatt</a>.<br><br>                    Si vous indiquez ici l'URL de votre serveur proxy, les téléchargeurs et autres services utiliseront le proxy lorsque https est spécifié..<br><br>
                 </p>
                 Proxy URL <input id="proxyURL" oninput="validateProxy()" size="48">
                 <p>
-                    <button class="actionDelete" id="proxyDelete" onclick="proxyDelete()">delete</button>
-                    <button class="actionCancel" id="proxyCancel" onclick="proxyCancel()">cancel</button>
-                    <button class="actionSave" id="proxySave" onclick="proxySave()">save</button>
+                    <button class="actionDelete" id="proxyDelete" onclick="proxyDelete()">Supprimer</button>
+                    <button class="actionCancel" id="proxyCancel" onclick="proxyCancel()">Annuler</button>
+                    <button class="actionSave" id="proxySave" onclick="proxySave()">Sauvegarder</button>
                 </p>
             </div>
 
@@ -287,12 +289,12 @@
 
             <div id="divStatus" class="body color_body" style="display:none">
 
-                <button id="tabIO" class="groupTab" onclick="toggleDisplay('statusIODiv')">Inputs/Outputs Status</button>
+                <button id="tabIO" class="groupTab" onclick="toggleDisplay('statusIODiv')">Statut Entrées/Sorties</button>
                 <div id="statusIODiv" class="statusDiv" style="display: block;">
                     <table id="statusIOBody" width="100%">
                         <tr>
-                            <th width="60%">Inputs</th>
-                            <th width="40%">Outputs</th>
+                            <th width="60%">Entrées</th>
+                            <th width="40%">Sorties</th>
                         </tr>
                         <tr valign="top">
                             <td>
@@ -305,7 +307,7 @@
                     </table>
                 </div>
 
-                <button id="tabStats" class="groupTab" onclick="toggleDisplay('statusStatsDiv')">IoTaWatt Statistics</button>
+                <button id="tabStats" class="groupTab" onclick="toggleDisplay('statusStatsDiv')">Statistiques IoTaWatt</button>
                 <div id="statusStatsDiv" class="statusDiv" style="display: none;">
                     <table width="100%">
                         <tr>
@@ -324,7 +326,7 @@
                     <table id="statusTable"></table>
                 </div>
 
-                <button id="tabWifi" class="groupTab" onclick="toggleDisplay('statusWifi')" style="display: none;">WiFi</button>
+                <button id="tabWifi" class="groupTab" onclick="toggleDisplay('statusWifi')" style="display: none;">Wi-Fi</button>
                 <div id="statusWifi" class="statusDiv" style="display: none;">
                     <table id="tableWifi" width="100%"></table>
                 </div>
@@ -367,7 +369,7 @@
                     </div>
                 </div>
 
-                <button id="tabLogs" class="groupTab" onclick="toggleDisplay('statusLogsDiv')">Data Logs</button>
+                <button id="tabLogs" class="groupTab" onclick="toggleDisplay('statusLogsDiv')">Journaux de données</button>
                 <div id="statusLogsDiv" class="statusDiv" style="display: none;"></div>
                 <table id="statusLogsTable"></table>
             </div>
@@ -380,9 +382,9 @@
             <!-- ****************************** WiFi **********************************-->
 
             <div id="divWiFi" class="body tools color_body" style="display:none">
-                <h3>Disconnect WiFi</h3>
+                <h3>Déconnecter le Wi-Fi</h3>
                 <p>
-                    Use this tool to permanently disconnect from the current WiFi network.<br>
+                    Utilisez cet outil pour vous déconnecter définitivement du réseau Wi-Fi actuel.<br>
                 </p>
                 <h3 id="WiFiMsg"></h3>
                 <button id="WiFiButton" class="actionDelete" onclick="sendDisconnect()">Disconnect</button>
@@ -392,44 +394,44 @@
             <!-- ****************************** Restart **********************************-->
 
             <div id="divRestart" class="body tools color_body" style="display:none">
-                <h3>Reset IoTaWatt!</h3>
+                <h3>Réinitialiser IoTaWatt !</h3>
                 <p>
-                    Press the restart button below to reset the IoTaWatt.<br> Restart can take up to 30 seconds, longer if loading new software.<br> After restart, refresh the browser window if this app fails to restart.
+                    Le redémarrage peut prendre jusqu'à 30 secondes, plus longtemps en cas de chargement d'un nouveau logiciel. Après le redémarrage, rafraîchissez la fenêtre du navigateur si l'application ne redémarre pas.
                 </p>
                 <h3 id="restartMsg"></h3>
-                <button id="restartButton" onclick="sendRestart()">Restart</button>
+                <button id="restartButton" onclick="sendRestart()">Redémarrer</button>
             </div>
             <!-- divrestart -->
 
             <!-- **************************** Datalogs ****************************** -->
 
             <div id="divLogs" class="body tools color_body" style="display:none">
-                <h3>Datalogs</h3>
+                <h3>Enregistrements de données</h3>
                 <table id="logsTable">
 
                     <!--
-        <tr><th>Log</th><th>Begins</th><th>Ends</th><th>Size</th><th>wrap</th></tr>
+        <tr><th>Journal</th><th>Début</th><th>Fins</th><th>Taille</th><th>Enveloppe</th></tr>
         <tr id="logsCurrent"></tr>
         <tr id="logsHistory"></tr> -->
                 </table>
-                <button id="logsTab" class="groupTab" onclick="toggleDisplay('logsDelete')">Datalog delete functions</button>
+                <button id="logsTab" class="groupTab" onclick="toggleDisplay('logsDelete')">Fonctions de suppression de l'enregistrement des données</button>
                 <div id="logsDelete" style="display:none">
-                    <h3>Delete Datalogs</h3>
-                    <h3>Deleted logs cannot be recovered!</h3>
+                    <h3>Supprimer les enregistrements de données</h3>
+                    <h3>Les journaux supprimés ne peuvent pas être récupérés!</h3>
                     <p>
-                        This is the only safe way to delete Data Logs.<br> The IoTaWatt will restart.<br>
+                        C'est le seul moyen sûr de supprimer les journaux de données.<br> L'IoTaWatt va redémarrer.<br>
                     </p>
                     <p>
-                        <button onclick="toolsDataLogsDelete('current')">Delete Current Log</button> a new log will created beginning now.<br>
+                        <button onclick="toolsDataLogsDelete('current')">Supprimer le journal actuel</button> un nouveau journal sera créé à partir de maintenant.<br>
                     </p>
                     <p>
-                        <button onclick="toolsDataLogsDelete('history')">Delete History Log</button> a new history log will be built from the current log.<br>
+                        <button onclick="toolsDataLogsDelete('history')">Supprimer le journal historique</button> un nouvel historique sera construit à partir de l'historique actuel.<br>
                     </p>
                     <div id="logsConfirm" style="display:none">
                         <h3 id="logsMsg"></h3>
-                        <p>Click DELETE to confirm.</p>
-                        <button class="actionCancel" onclick="toolsDataLogsCancel()">Cancel</button>
-                        <button id="logsConfirm" class="actionDelete">DELETE</button>
+                        <p>Cliquez sur SUPPRIMER pour confirmer.</p>
+                        <button class="actionCancel" onclick="toolsDataLogsCancel()">Annuler</button>
+                        <button id="logsConfirm" class="actionDelete">SUPPRIMER</button>
                     </div>
                 </div>
             </div>
@@ -442,7 +444,7 @@
             <div id="divCalc" class="color_body" style="display:none">
                 <div id="calcBody" class="color_inputcontainer">
 
-                    <h3 id="calcTitle" style="text-align:center">Configure Output</h3>
+                    <h3 id="calcTitle" style="text-align:center">Configurer la sortie</h3>
                     <table id="calcTable">
                         <tr>
                             <th width="30%"></th>
@@ -459,14 +461,14 @@
                             <th></th>
                         </tr>
                         <tr>
-                            <td><button class="calcButton calcClr" onclick="keyClearAll()" title="Clear all" value="C">C</button></td>
-                            <td><button class="calcButton calcBack" onclick="keyClearEntry()" title="Clear last entry" value="CE">CE</button></td>
-                            <td> <button class="calcButton calcBack" onclick="keyClearChar()" title="Backspace" value="del">&#x21e6;</button></td>
+                            <td><button class="calcButton calcClr" onclick="keyClearAll()" title="Tout effacer" value="C">C</button></td>
+                            <td><button class="calcButton calcBack" onclick="keyClearEntry()" title="Effacer la dernière entrée" value="CE">CE</button></td>
+                            <td> <button class="calcButton calcBack" onclick="keyClearChar()" title="Retour arrière" value="del">&#x21e6;</button></td>
                             <td class="calcInputDropdown">
-                                <button class="calcButton calcInput" title="Select Input" value="@">input</button>
+                                <button class="calcButton calcInput" title="Choisissez une Entrée" value="@">entrée</button>
                                 <span class="calcInputDropdown-content" id="calcInputDropdown-content" display="none">
-              <p onclick="keyInput(this)">Input_1</p>
-              <p onclick="keyInput(this)">Input_2</p>
+              <p onclick="keyInput(this)">Entree_1</p>
+              <p onclick="keyInput(this)">Entree_2</p>
             </span>
                             </td>
                         </tr>
@@ -499,7 +501,7 @@
                             <td><button class="calcButton calcParen" onclick="keyPop()" value=")">)</button></td>
                             <td> <button class="calcButton calcAbs" onclick="keyUniPos()" value="abs" title="make previous result positive">abs</button></td>
                             <td class="calcInputDropdown">
-                                <button class="calcButton calcInput" title="Select Function" value="Func">func</button>
+                                <button class="calcButton calcInput" title="Choisissez une fonction" value="Func">func</button>
                                 <span class="calcInputDropdown-content" id="calcInputDropdown-content" display="none">
               <p onclick="keyBinFunc('<')" title="lesser of the two operands">min</p>
               <p onclick="keyBinFunc('>')" title="greater of the two operands">max</p>
@@ -508,9 +510,9 @@
                         </tr>
                     </table>
                     <div id="calcActions">
-                        <button class="actionDelete" id="calcDelete" onclick="calcDelete()">delete</button>
-                        <button class="actionCancel" id="calcCancel" onclick="calcCancel();">cancel</button>
-                        <button class="actionSave" id="calcSave" onclick="calcSave()">save</button>
+                        <button class="actionDelete" id="calcDelete" onclick="calcDelete()">Supprimer</button>
+                        <button class="actionCancel" id="calcCancel" onclick="calcCancel();">Annuler</button>
+                        <button class="actionSave" id="calcSave" onclick="calcSave()">Sauvegarder</button>
                     </div>
                 </div>
             </div>
@@ -762,7 +764,7 @@
         function setPasswords() {
             editing = true;
             authReq = {};
-            EbyId("pwdTable").innerHTML = "Checking for existing password";
+            EbyId("pwdTable").innerHTML = "Vérification du mot de passe existant";
             currentBodyPush("setPasswords");
             var xmlHttp = new XMLHttpRequest();
             xmlHttp.onreadystatechange = function() {
@@ -770,9 +772,9 @@
                     var response = JSON.parse(xmlHttp.responseText);
                     if (response.passwords.admin) {
                         EbyId("pwdTable").innerHTML = "";
-                        var oldAdmin = addTableRow(pwdTable, "Current Admin password", "oldAdminPwd", "input", 16);
+                        var oldAdmin = addTableRow(pwdTable, "Mot de passe actuel de l'administrateur", "oldAdminPwd", "input", 16);
                         oldAdmin.setAttribute("onblur", "pwdValidate();");
-                        oldAdmin.title = "Required to proceed";
+                        oldAdmin.title = "Nécessaire pour poursuivre";
                         show("pwdCheck");
                         //EbyId("pwdCheck").style.display = "inline";
                     } else {
@@ -808,24 +810,24 @@
         function pwdValid() {
             EbyId("pwdTable").innerHTML = "";
             EbyId("pwdCheck").style.display = "none";
-            var newPwd = addTableRow(pwdTable, "new Admin password", "newAdminPwd", "input", 16);
+            var newPwd = addTableRow(pwdTable, "nouveau mot de passe administrateur", "newAdminPwd", "input", 16);
             newPwd.pattern = "^[A-Za-z0-9_!%@#]{0,16}";
-            newPwd.title = "1-16 characters, blank to reset";
+            newPwd.title = "1-16 caractères, vide pour réinitialiser";
             newPwd.setAttribute("oninput", "pwdCheck();");
-            newPwd = addTableRow(pwdTable, "new User password", "newUserPwd", "input", 16);
+            newPwd = addTableRow(pwdTable, "nouveau mot de passe de l'utilisateur", "newUserPwd", "input", 16);
             newPwd.pattern = "^[A-Za-z0-9_!%@#]{0,16}";
-            newPwd.title = "1-16 characters, blank to reset";
+            newPwd.title = "1-16 caractères, vide pour réinitialiser";
             newPwd.setAttribute("oninput", "pwdCheck();");
-            localAccess = addTableRow(pwdTable, "Unrestricted LAN access", "localAccess", "input");
+            localAccess = addTableRow(pwdTable, "Accès illimité au réseau local", "localAccess", "input");
             localAccess.setAttribute("type", "checkbox");
-            localAccess.title = "No passwords needed from LAN.";
+            localAccess.title = "Aucun mot de passe n'est nécessaire sur le réseau local.";
             pwdCheck();
         }
 
         function pwdCheck() {
             var complete = true;
-            if (!validateInput("newAdminPwd", false, "not a valid password")) complete = false;
-            if (!validateInput("newUserPwd", false, "not a valid password")) complete = false;
+            if (!validateInput("newAdminPwd", false, "mot de passe non valide")) complete = false;
+            if (!validateInput("newUserPwd", false, "mot de passe non valide")) complete = false;
             if (complete) {
                 EbyId("pwdSave").style.display = "inline";
             }
@@ -869,7 +871,7 @@
             xmlHttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     editing = true;
-                    EbyId("restartMsg").innerHTML = "Restarting...";
+                    EbyId("restartMsg").innerHTML = "Redémarrage...";
                     setTimeout(function() {
                         setup();
                     }, 15000);
@@ -889,7 +891,7 @@
             xmlHttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     editing = true;
-                    EbyId("WiFiMsg").innerHTML = "Disconnected";
+                    EbyId("WiFiMsg").innerHTML = "Déconnecté";
                     setTimeout(function() {
                         setup();
                     }, 15000);
@@ -918,12 +920,12 @@
             xmlHttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var status = JSON.parse(xmlHttp.responseText);
-                    EbyId("logsTable").innerHTML = "<tr><th>Attribute</th><th>Current Log</th><th>History Log</th></tr>";
-                    formatLine("Start Date", formatDateTime(status.datalogs.currlog.firstkey), formatDateTime(status.datalogs.histlog.firstkey));
-                    formatLine("End Date", formatDateTime(status.datalogs.currlog.lastkey), formatDateTime(status.datalogs.histlog.lastkey));
-                    formatLine("File Size", status.datalogs.currlog.size, status.datalogs.histlog.size);
-                    formatLine("Interval (sec)", status.datalogs.currlog.interval, status.datalogs.histlog.interval);
-                    formatLine("Complete", density(status.datalogs.currlog) + "%", density(status.datalogs.histlog) + "%");
+                    EbyId("logsTable").innerHTML = "<tr><th>Attribut</th><th>Journal actuel</th><th>Journal historique</th></tr>";
+                    formatLine("Date de début", formatDateTime(status.datalogs.currlog.firstkey), formatDateTime(status.datalogs.histlog.firstkey));
+                    formatLine("Date de fin", formatDateTime(status.datalogs.currlog.lastkey), formatDateTime(status.datalogs.histlog.lastkey));
+                    formatLine("Taille de fichier", status.datalogs.currlog.size, status.datalogs.histlog.size);
+                    formatLine("Intervalle (sec)", status.datalogs.currlog.interval, status.datalogs.histlog.interval);
+                    formatLine("Compléter", density(status.datalogs.currlog) + "%", density(status.datalogs.histlog) + "%");
                     return;
 
                     function formatLine(attribute, value1, value2) {
@@ -944,7 +946,7 @@
             xmlHttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var msg = EbyId("logsMsg");
-                    msg.innerHTML = "Deleting " + log + " and restarting.";
+                    msg.innerHTML = "Suppression " + log + " et redémarrage.";
                     setTimeout(function() {
                         toolsDataLogsCancel();
                         setup();
@@ -958,12 +960,12 @@
 
         function toolsDataLogsDelete(log) {
             var msg = EbyId("logsMsg");
-            msg.innerHTML = "You are about to permanently delete the ";
+            msg.innerHTML = "Vous êtes sur le point de supprimer définitivement le ";
             if (log == "current") {
-                msg.innerHTML += "current log.";
+                msg.innerHTML += "journal actuel.";
                 EbyId("logsConfirm").setAttribute("onclick", "toolsDataLogsCommit('current')");
             } else if (log == "history") {
-                msg.innerHTML += "history log.";
+                msg.innerHTML += "journal historique.";
                 EbyId("logsConfirm").setAttribute("onclick", "toolsDataLogsCommit('history')");
             } else {
                 toolsDataLogsCancel();
@@ -1058,7 +1060,7 @@
             if (inputEditObject === null) {
                 inputEditObject = {
                     channel: channel,
-                    name: "Input_" + channel
+                    name: "Entree_" + channel
                 };
                 inputEditNewType("CT");
             }
@@ -1074,36 +1076,36 @@
             var complete = true;
             var table = EbyId("inputEditTable");
             table.innerHTML = "";
-            EbyId("inputChannel").innerHTML = "Configure Input " + inputEditChannel;
+            EbyId("inputChannel").innerHTML = "Configurer l'entrée " + inputEditChannel;
 
-            var newInput = addTableRow(table, "Burden:", "inputBurden", "span");
-            if (config.device.burden[inputEditChannel] == 0) inputBurden.innerHTML = "none configured.";
+            var newInput = addTableRow(table, "Charge :", "inputBurden", "span");
+            if (config.device.burden[inputEditChannel] == 0) inputBurden.innerHTML = "aucune configurée.";
             else if (Number.isInteger(config.device.burden[inputEditChannel])) inputBurden.innerHTML = config.device.burden[inputEditChannel].toFixed(0) + " ohms";
             else inputBurden.innerHTML = config.device.burden[inputEditChannel].toFixed(1) + " ohms";
 
-            var inputName = addTableRow(table, "Name: ", "inputName", "input", 12);
+            var inputName = addTableRow(table, "Nom : ", "inputName", "input", 12);
             inputName.setAttribute("onblur", "inputEditObject.name=this.value.trim(); refreshInputEdit();");
             inputName.value = inputEditObject.name;
             inputName.pattern = "[A-Za-z]{1}[a-zA-Z0-9_]*";
 
             if (inputName.value == "") {
-                inputEditMsg(inputName, "Please specify a name");
+                inputEditMsg(inputName, "Veuillez spécifier un nom");
                 complete = false;
             }
             if (inputName.validationMessage != "") {
-                inputEditMsg(inputName, "Invalid name");
+                inputEditMsg(inputName, "Nom invalide");
                 complete = false;
             }
             for (i in config.inputs) {
                 if (i != inputEditChannel && config.inputs[i] !== null && config.inputs[i].name == inputName.value) {
                     inputName.parentNode.appendChild(document.createElement("br"));
-                    keyInput.parentNode.appendChild(document.createTextNode(" API key should be 16 hex digits."));
-                    inputEditMsg(inputName, "Name already used for channel " + inputEditChannel);
+                    keyInput.parentNode.appendChild(document.createTextNode(" La clé API doit être composée de 16 chiffres hexagonaux."));
+                    inputEditMsg(inputName, "Nom déjà utilisé pour le canal " + inputEditChannel);
                     complete = false;
                 }
             }
 
-            newInput = addTableRow(table, "Type: ", "inputType", "select");
+            newInput = addTableRow(table, "Type : ", "inputType", "select");
             newInput.setAttribute("onchange", "inputEditNewType(this.value); refreshInputEdit();");
             var option = document.createElement("option");
             option.text = inputEditObject.type;
@@ -1113,7 +1115,7 @@
             option.text = (inputEditObject.type == "CT") ? "VT" : "CT";
             newInput.add(option);
 
-            inputModel = addTableRow(table, "Model: ", "inputModel", "select");
+            inputModel = addTableRow(table, "Modèle : ", "inputModel", "select");
             var option = document.createElement("option");
             option.text = "generic";
             inputModel.add(option);
@@ -1159,7 +1161,7 @@
             if (inputEditObject.model == "generic" &&
                 (inputEditObject.type == "VT" ||
                     (inputEditObject.type == "CT" && config.device.burden[inputEditChannel] == 0))) {
-                inputCal = addTableRow(table, "Cal: ", "inputCal", "input", 5);
+                inputCal = addTableRow(table, "Calibrage : ", "inputCal", "input", 5);
                 inputCal.setAttribute("onblur", "inputEditObject.cal=this.value.trim(); refreshInputEdit();");
                 if (inputEditObject.cal === undefined) {
                     complete = false;
@@ -1167,24 +1169,24 @@
                     inputCal.value = inputEditObject.cal;
                     inputCal.value = parseFloat(inputCal.value).toPrecision(4);
                     if (inputCal.value == 0) {
-                        inputEditMsg(inputCal, "Cannot be zero");
+                        inputEditMsg(inputCal, "Ne peut être égal à zéro");
                         complete = false;
                     }
                 }
             }
 
             if (inputEditObject.model == "generic" && inputEditObject.type == "CT" && config.device.burden[inputEditChannel] > 0) {
-                inputTurns = addTableRow(table, "Turns: ", "inputTurns", "input", 5);
+                inputTurns = addTableRow(table, "Tours : ", "inputTurns", "input", 5);
                 inputTurns.setAttribute("onblur", "inputEditObject.turns = this.value.trim(); refreshInputEdit();");
                 inputTurns.value = inputEditObject.turns;
                 if (Number.isNaN(inputTurns.value)) {
-                    inputEditMsg(inputTurns, "Numeric value required");
+                    inputEditMsg(inputTurns, "Valeur numérique requise");
                     complete = false;
                 } else {
                     inputTurns.value = parseInt(inputTurns.value);
                     var cal = inputTurns.value / config.device.burden[inputEditChannel];
                     if (cal < 5 || cal >= 1000) {
-                        inputEditMsg(inputTurns, " Range is " + (config.device.burden[inputEditChannel] * 5).toString() + " to " + (config.device.burden[inputEditChannel] * 900).toString());
+                        inputEditMsg(inputTurns, " La portée est de " + (config.device.burden[inputEditChannel] * 5).toString() + " à " + (config.device.burden[inputEditChannel] * 900).toString());
                         complete = false;
                     } else {
                         inputEditObject.cal = cal;
@@ -1194,11 +1196,11 @@
 
             //************************************************************************************************************************************
             if (inputEditObject.model == "generic") {
-                inputPhase = addTableRow(table, "Phase lead: ", "inputPhase", "input", 4);
+                inputPhase = addTableRow(table, "Avance de phase : ", "inputPhase", "input", 4);
                 inputPhase.setAttribute("onblur", "inputEditObject.phase = this.value; refreshInputEdit();");
                 inputPhase.value = (inputEditObject.phase !== undefined) ? inputEditObject.phase : 0;
                 if (isNaN(inputEditObject.phase)) {
-                    inputEditMsg(inputPhase, "Numeric value required");
+                    inputEditMsg(inputPhase, "Valeur numérique requise");
                     complete = false;
                 }
             }
@@ -1218,7 +1220,7 @@
                     }
                 }
                 if (config.derive3ph) {
-                    inputVchan = addTableRow(table, "Mains Phase", "inputVphase", "select");
+                    inputVchan = addTableRow(table, "Phase du réseau", "inputVphase", "select");
                     inputVchan.setAttribute("oninput",
                         "inputEditObject.vphase=derivedTable[this.value].vphase; inputEditObject.vmult=derivedTable[this.value].vmult; refreshInputEdit();");
                     for (i in derivedTable) {
@@ -1241,8 +1243,8 @@
             if (inputEditObject.type == "CT") {
 
                 inputNeg = addTableRow(table, "", "inputNeg", "input");
-                inputNeg.parentNode.appendChild(document.createTextNode("Allow negative power value"));
-                addInfo(inputNeg, "Use on mains when solar or wind can export power.");
+                inputNeg.parentNode.appendChild(document.createTextNode("Autoriser une valeur de puissance négative"));
+                addInfo(inputNeg, "Utilisation sur le réseau lorsque l'énergie solaire ou éolienne peut exporter de l'énergie.");
                 inputNeg.setAttribute("type", "checkbox");
                 inputNeg.setAttribute("onchange", "inputEditObject.signed = this.checked; refreshInputEdit();");
                 if (inputEditObject.signed != undefined && inputEditObject.signed) {
@@ -1254,7 +1256,7 @@
                 if (!config.derive3ph || inputEditObject.double != undefined) {
                     inputDouble = addTableRow(table, "", "inputMult", "input");
                     inputDouble.parentNode.appendChild(document.createTextNode("Double"));
-                    addInfo(inputDouble, "Double measured power.  Use with balanced 240V circuit with CT on one conductor.");
+                    addInfo(inputDouble, "Doublement de la puissance mesurée.  A utiliser avec un circuit équilibré de 240V avec CT sur un conducteur.");
                     inputDouble.setAttribute("type", "checkbox");
                     inputDouble.setAttribute("onchange", "inputEditObject.double = this.checked; refreshInputEdit();");
                     if (inputEditObject.double != undefined && inputEditObject.double) {
@@ -1268,8 +1270,8 @@
             }
 
             inputReverse = addTableRow(table, "", "inputReverse", "input");
-            inputReverse.parentNode.appendChild(document.createTextNode("Reverse"));
-            addInfo(inputReverse, inputEditObject.type == "CT" ? "Same as reversing CT on conductor" : "Same as reversing VT in socket");
+            inputReverse.parentNode.appendChild(document.createTextNode("Inverser"));
+            addInfo(inputReverse, inputEditObject.type == "CT" ? "Identique à l'inversion du TC sur le conducteur" : "Identique à l'inversion du TC dans la prise.");
             inputReverse.setAttribute("type", "checkbox");
             inputReverse.setAttribute("onchange", "inputEditObject.reverse = this.checked; refreshInputEdit();");
             if (inputEditObject.reverse != undefined && inputEditObject.reverse) {
@@ -1283,7 +1285,7 @@
                     (config.inputs[inputEditChannel] == null || vchanUsed[inputEditChannel]) ? "none" : "inline";
                 if (complete) {
                     inputCal = addTableRow(table, "", "inputCal", "button");
-                    inputCal.innerHTML = "calibrate";
+                    inputCal.innerHTML = "calibrer";
                     inputCal.setAttribute("class", "actionCal");
                     inputCal.setAttribute("onclick", "calVTvoltage();");
                 }
@@ -1402,7 +1404,7 @@
 
         function calVTvoltage(obj) {
             currentBodyPush("inputCalVT");
-            EbyId("inputCalChannel").innerHTML = "Calibrate Voltage Channel " + inputEditChannel;
+            EbyId("inputCalChannel").innerHTML = "Calibrage du canal de tension " + inputEditChannel;
             EbyId("inputCalVolts").innerHTML = "120.1";
             EbyId("inputCalCal").value = inputEditObject.cal;
 
@@ -1460,7 +1462,7 @@
               units : ["Watts", "Volts", "Amps", "Hz", "PF", "VA", "VAR", "VARh"],
               nameList : [],
               uniqueNames : true,
-              namePrompt : "Name must be alphanumeric and start with a letter",
+              namePrompt : "Le nom doit être alphanumérique et commencer par une lettre.",
               namePattern : "^[a-zA-Z]{1}[a-zA-Z0-9_]{0,15}$",
             };
             
@@ -1491,9 +1493,9 @@
               nameList : [],
               allowIntegrators : false,
               uniqueNames : true,
-              namePrompt : "Name must be alphanumeric and start with a letter",
+              namePrompt : "Le nom doit être alphanumérique et commencer par une lettre.",
               namePattern : "^[a-zA-Z]{1}[a-zA-Z0-9_]{0,15}$",
-              title : "Integrator"
+              title : "Intégrateur"
             };
 
             scriptEdit.save = function() {
@@ -1508,7 +1510,7 @@
             };
             
             scriptEdit.delete = function(script){
-              return confirm("Deleting the integration will delete the integration log.");
+              return confirm("La suppression de l'intégration entraîne la suppression du journal d'intégration.");
             }
             
             editScript(scriptEdit);
@@ -1592,7 +1594,7 @@
                 scriptColumn.innerHTML = " = " + scriptDisplay(parseScript(scriptEdit.set[i].script));
                 var editButton = document.createElement("button");
                 editButton.setAttribute("class", "outputEditButton");
-                editButton.appendChild(document.createTextNode("edit"));
+                editButton.appendChild(document.createTextNode("éditer"));
                 editButton.setAttribute("onclick", "calculator(" + i + ")");
                 selColumn.appendChild(editButton);
             }
@@ -1603,7 +1605,7 @@
             newRow.appendChild(selColumn);
             var editButton = document.createElement("button");
             editButton.setAttribute("class", "outputEditButton");
-            editButton.appendChild(document.createTextNode("add"));
+            editButton.appendChild(document.createTextNode("ajouter"));
             editButton.setAttribute("onclick", "addOutput()");
             selColumn.appendChild(editButton);
 
@@ -1659,9 +1661,9 @@
                       calcDisplay += tokens[i].substr(1);
                   } else if (tokens[i].startsWith("@")) {
                       var channel = tokens[i].substr(1);
-                      var name = "Input_" + channel;
+                      var name = "Entree_" + channel;
                       if (config.inputs[channel] != null) name = config.inputs[channel].name;
-                      if (name == "") name = "Input_" + channel;
+                      if (name == "") name = "Entree_" + channel;
                       calcDisplay += name;
                   } else if (tokens[i].startsWith("~")) {
                       var id = tokens[i].substr(1);
@@ -1693,7 +1695,7 @@
           
           this.calculator = function(index) {
               editingScript = true;
-              EbyId("calcTitle").innerHTML = "Configure " + (scriptEdit.title === undefined ? "Output" : scriptEdit.title);
+              EbyId("calcTitle").innerHTML = "Configurer " + (scriptEdit.title === undefined ? "Sortie" : scriptEdit.title);
               currentBodyPush("divCalc");
               EbyId("calcTable").innerHTML = "";
               buildNames(scriptEdit.set[index].name);
@@ -1707,13 +1709,13 @@
           function buildNames(name) {
               var calcTable = EbyId("calcTable");
               if (scriptEdit.nameList.length == 0) {
-                  var calcName = addTableRow(calcTable, "Name:", "calcName", "input", 1);
+                  var calcName = addTableRow(calcTable, "Nom :", "calcName", "input", 1);
                   calcName.setAttribute("onchange", "refreshCalcDisplay()");
                   calcName.pattern = scriptEdit.namePattern;
                   calcName.title = scriptEdit.namePrompt;
                   calcName.value = name;
               } else {
-                  var calcName = addTableRow(calcTable, "Name:", "calcName", "select", 1);
+                  var calcName = addTableRow(calcTable, "Nom :", "calcName", "select", 1);
                   calcName.setAttribute("oninput", "refreshCalcDisplay()");
                   calcName.value = name;
                   for (i in scriptEdit.nameList) {
@@ -1730,7 +1732,7 @@
   
           function buildUnitsList(units) {
               var calcTable = EbyId("calcTable");
-              var calcUnits = addTableRow(calcTable, "Units:", "calcUnits", "select", 1);
+              var calcUnits = addTableRow(calcTable, "Unité :", "calcUnits", "select", 1);
               calcUnits.style = "width: 80px;";
               for (i in scriptEdit.units) {
                   var option = document.createElement("option");
@@ -1747,7 +1749,7 @@
               editingScript = true;
               currentBodyPush("divCalc");
               EbyId("calcTable").innerHTML = "";
-              EbyId("calcTitle").innerHTML = "Configure " + (scriptEdit.title === undefined ? "Output" : scriptEdit.title);
+              EbyId("calcTitle").innerHTML = "Configurer " + (scriptEdit.title === undefined ? "Sortie" : scriptEdit.title);
               buildNames("");
               buildUnitsList("watts");
               tokens = ["#0"];
@@ -1932,7 +1934,7 @@
                     var response = JSON.parse(xmlHttp.responseText);
                     if (response.passwords.admin) {
                         EbyId("deviceName").disabled = true;
-                        EbyId("deviceName").title = "Passwords must be disabled to modify device name.";
+                        EbyId("deviceName").title = "Les mots de passe doivent être désactivés pour modifier le nom de l'appareil.";
                     }
                 }
             }
@@ -1947,12 +1949,12 @@
             editing = false;
             originalName = config.device.name;
 
-            var deviceName = addTableRow(deviceTable, "Device name:", "deviceName", "input", 8);
+            var deviceName = addTableRow(deviceTable, "Nom de l'appareil :", "deviceName", "input", 8);
             deviceName.value = config.device.name;
             deviceName.setAttribute("oninput", "config.device.name = this.value.trim(); checkDevice();");
             deviceName.pattern = "[a-zA-Z]{1}[0-9a-zA-Z]{3,7}";
 
-            var deviceTimezone = addTableRow(deviceTable, "Time Zone:", "deviceTimezone", "input", 3);
+            var deviceTimezone = addTableRow(deviceTable, "Fuseau horaire :", "deviceTimezone", "input", 3);
             deviceTimezone.value = config.timezone;
             deviceTimezone.setAttribute("onchange", "config.timezone = this.value; checkDevice();");
             deviceTimezone.setAttribute("style", "width: 65px;");
@@ -1961,12 +1963,12 @@
             deviceTimezone.setAttribute("max", "13");
             deviceTimezone.setAttribute("step", ".5");
 
-            var allowDST = addTableRow(deviceTable, "Allow Daylight Time:", "allowDST", "input");
+            var allowDST = addTableRow(deviceTable, "Tenir compte de l'heure d'été :", "allowDST", "input");
             allowDST.setAttribute("type", "checkbox");
             allowDST.checked = (config.dstrule != undefined) ? true : false;
             allowDST.setAttribute("onchange", "checkDevice();");
 
-            var deviceUpdate = addTableRow(deviceTable, "Auto-update Class:", "deviceUpdate", "select");
+            var deviceUpdate = addTableRow(deviceTable, "Mise à jour automatique de la classe :", "deviceUpdate", "select");
             for (i in updateClasses) {
                 var option = document.createElement("option");
                 option.text = updateClasses[i];
@@ -1977,7 +1979,7 @@
         }
 
         function changeAdmin(newPassword) {
-            alert("Admin password will be changed to: \"" + newPassword + "\" when you save.");
+            alert("Le mot de passe administrateur sera modifié en : \"" + newPassword + "\" lorsque vous enregistrez.");
         }
 
         function checkDevice() {
@@ -1990,9 +1992,9 @@
                     nameChange = true;
                     var obj = EbyId("deviceName");
                     obj.parentNode.appendChild(document.createElement("BR"));
-                    obj.parentNode.appendChild(document.createTextNode("Name changed, IoTaWatt will restart on Save."));
+                    obj.parentNode.appendChild(document.createTextNode("Le nom a changé, IoTaWatt redémarrera sur Sauvegarder."));
                     obj.parentNode.appendChild(document.createElement("BR"));
-                    obj.parentNode.appendChild(document.createTextNode("Then restart app at " + config.device.name + ".local"));
+                    obj.parentNode.appendChild(document.createTextNode("Puis redémarrer l'application à " + config.device.name + ".local"));
                 }
             }
             if (!validateInput("deviceTimezone")) complete = false;
@@ -2037,7 +2039,7 @@
             for (var i = 0; i < config.device.channels; i++) {
                 var newRow = burdenTable.insertRow(-1);
                 var newCol = newRow.insertCell(-1);
-                newCol.innerHTML = "Input: " + i;
+                newCol.innerHTML = "Entrée : " + i;
                 newCol.setAttribute("align", "right");
                 newCol = newRow.insertCell(-1);
                 var newInput = document.createElement("input");
@@ -2060,10 +2062,10 @@
                 obj.parentNode.removeChild(obj.nextSibling);
             }
             if (Number.isNaN(val)) {
-                obj.parentNode.appendChild(document.createTextNode(" Must be numeric."));
+                obj.parentNode.appendChild(document.createTextNode(" Doit être numérique."));
                 faults++;
             } else if (val.toFixed(1) < 0) {
-                obj.parentNode.appendChild(document.createTextNode(" Must be positive."));
+                obj.parentNode.appendChild(document.createTextNode(" Doit être positif."));
                 faults++;
             } else {
                 config.device.burden[index] = Number(val.toFixed(2));
@@ -2096,17 +2098,17 @@
 
         function buildWebServer() {
             var servers = ["Emoncms", "InfluxDB_v1", "influxDB_v2", "PVoutput"];
-            EbyId("serverHead").innerHTML = "Setup Server Uploaders";
+            EbyId("serverHead").innerHTML = "Configuration du serveur Uploaders";
             EbyId("divInfluxTagSet").style.display = "none";
             EbyId("divServerOutputs").style.display = "none";
             var serverTable = EbyId("serverTable");
             serverTable.innerHTML = "";
             currentBodyPush("divWebServer");
-            var serverSelect = addTableRow(serverTable, "Server Type", "serverType", "select");
+            var serverSelect = addTableRow(serverTable, "Type de serveur", "serverType", "select");
             serverSelect.setAttribute("onchange", "editServer(this)");
             serverSelect.setAttribute("style", "center");
             var option = document.createElement("option");
-            option.text = "select server type";
+            option.text = "choisisser un type de serveur";
             serverSelect.add(option);
 
             for (i in servers) {
@@ -2114,16 +2116,16 @@
                 option.text = servers[i];
                 option.value = servers[i];
                 if (servers[i].toLowerCase() == "emoncms") {
-                    option.text += (config[emoncmsAlias] !== undefined) ? " (edit)" : " (add)";
+                    option.text += (config[emoncmsAlias] !== undefined) ? " (modifier)" : " (ajouter)";
                 }
                 if (servers[i].toLowerCase() == "influxdb_v1") {
-                    option.text += (config.influxdb !== undefined) ? " (edit)" : " (add)";
+                    option.text += (config.influxdb !== undefined) ? " (modifier)" : " (ajouter)";
                 }
                 if (servers[i].toLowerCase() == "influxdb_v2") {
-                    option.text += (config.influxdb2 !== undefined) ? " (edit)" : " (add)";
+                    option.text += (config.influxdb2 !== undefined) ? " (modifier)" : " (ajouter)";
                 }
                 if (servers[i].toLowerCase() == "pvoutput") {
-                    option.text += (config.pvoutput !== undefined) ? " (edit)" : " (add)";
+                    option.text += (config.pvoutput !== undefined) ? " (modifier)" : " (ajouter)";
                 }
                 serverSelect.add(option);
             }
@@ -2216,10 +2218,10 @@
                     pwd: "",
                 };
                 EbyId("serverDelete").style.display = "none";
-                EbyId("serverHead").innerHTML = "Add Emoncms Service";
+                EbyId("serverHead").innerHTML = "Ajouter un service Emoncms";
             } else {
                 config[emoncmsAlias].revision++;
-                EbyId("serverHead").innerHTML = "Edit Emoncms Service";
+                EbyId("serverHead").innerHTML = "Modifier le service Emoncms";
                 EbyId("serverDelete").style.display = "inline";
                 EbyId("serverDelete").setAttribute("onclick", "deleteEmoncms();");
             }
@@ -2239,12 +2241,12 @@
                 }
             }
 
-            var nodeInput = addTableRow(serverTable, "Node:", "serverNode", "input", 8);
+            var nodeInput = addTableRow(serverTable, "Nœud :", "serverNode", "input", 8);
             nodeInput.value = config[emoncmsAlias].node;
             nodeInput.setAttribute("onchange", "config[emoncmsAlias].node = this.value; checkEmoncms();")
             nodeInput.style = "width: 80px;";
 
-            var postInput = addTableRow(serverTable, "post interval(sec): ", "serverPost", "input", 3);
+            var postInput = addTableRow(serverTable, "Intervalle de temps (sec) :", "serverPost", "input", 3);
             postInput.value = Number(config[emoncmsAlias].postInterval);
             postInput.setAttribute("onchange", "config[emoncmsAlias].postInterval = Number(this.value); checkEmoncms();");
             postInput.setAttribute("style", "width: 40px;");
@@ -2254,7 +2256,7 @@
             postInput.step = 5;
 
             if (isNaN(config[emoncmsAlias].bulksend)) config[emoncmsAlias].bulksend = 1;
-            var bulksendInput = addTableRow(serverTable, "bulk send:", "serverBulk", "input", 3);
+            var bulksendInput = addTableRow(serverTable, "Envoi en masse :", "serverBulk", "input", 3);
             bulksendInput.value = Number(config[emoncmsAlias].bulksend);
             bulksendInput.setAttribute("onchange", "config[emoncmsAlias].bulksend = Number(this.value); checkEmoncms();");
             bulksendInput.style = "width: 40px;";
@@ -2262,46 +2264,46 @@
             bulksendInput.min = 1;
             bulksendInput.max = 60;
             bulksendInput.step = 1;
-            bulksendInput.title = "Send multiple entries in a single HTTP transaction";
+            bulksendInput.title = "Envoyer plusieurs entrées en une seule transaction HTTP";
 
-            var begdateInput = addTableRow(serverTable, "upload history from:", "serverBegd", "input", 16);
+            var begdateInput = addTableRow(serverTable, "Télécharger l'historique à partir du :", "serverBegd", "input", 16);
             begdateInput.setAttribute("oninput",
                 "config[emoncmsAlias].begdate = new Date(this.value).getTime()/1000 - config.timezone*3600; checkEmoncms();");
             begdateInput.value = toInputDate(config[emoncmsAlias].begdate + config.timezone * 3600);
             begdateInput.type = "date";
 
-            var urlInput = addTableRow(serverTable, "server URL:", "serverURL", "input", 32);
+            var urlInput = addTableRow(serverTable, "URL du serveur :", "serverURL", "input", 32);
             urlInput.value = config[emoncmsAlias].url
             urlInput.setAttribute("onchange", "config[emoncmsAlias].url = this.value; checkEmoncms();");
             urlInput.type = "url";
 
-            var keyInput = addTableRow(serverTable, "api key:", "serverKey", "input", 32);
+            var keyInput = addTableRow(serverTable, "Clé API :", "serverKey", "input", 32);
             keyInput.value = config[emoncmsAlias].apikey;
             keyInput.setAttribute("onchange", "config[emoncmsAlias].apikey = this.value; checkEmoncms();");
             keyInput.setAttribute("type", "password");
             keyInput.size = 32;
             keyInput.pattern = "[0-9a-f]{32}";
-            keyInput.title = "read/write key - 32 hexadecimal digits";
+            keyInput.title = "clé de lecture/écriture - 32 chiffres hexadécimaux";
 
-            addTableText(serverTable, "", "Specifying userid triggers secure encrypted protocol.")
-            var keyInput = addTableRow(serverTable, "Emoncms userid", "serverUser", "input", 10);
+            addTableText(serverTable, "", "La spécification de l'identifiant déclenche un protocole crypté sécurisé.")
+            var keyInput = addTableRow(serverTable, "Identifiant Emoncms :", "serverUser", "input", 10);
             if (config[emoncmsAlias].userid === undefined) config[emoncmsAlias].userid = "";
             keyInput.value = config[emoncmsAlias].userid;
             keyInput.setAttribute("onchange", "config[emoncmsAlias].userid = this.value; checkEmoncms();");
             keyInput.setAttribute("size", "16");
             keyInput.pattern = "[0-9]*";
-            keyInput.title = "In upper-left corner of Emoncms My Account";
+            keyInput.title = "Dans le coin supérieur gauche de Mon compte Emoncms";
 
             EbyId("divServerOutputs").style.display = "inline";
-            EbyId("serverOutputsHeader").innerHTML = "Emoncms inputs";
+            EbyId("serverOutputsHeader").innerHTML = "Entrées Emoncms";
             
             var scriptEdit = {
               table : EbyId("serverOutputs"),
               set : config[emoncmsAlias].outputs,
               units : ["Watts", "Volts", "Amps", "Hz", "PF", "VA", "Wh", "kWh", "VAR", "VARh"],
-              namePrompt : "Name is Emoncms Input Key 1-29",
+              namePrompt : "Le nom est Emoncms entrée 1-29",
               namePattern : "^[1-9]{1}$|^[1-2]{1}[0-9]{1}$",
-              title : "Emoncms input"
+              title : "Entrée Emoncms"
             };
 
             scriptEdit.save = function() {
@@ -2365,11 +2367,11 @@
             if (version == 1) {
                 if (serverConfig !== undefined) {
                     serverConfig.revision++;
-                    EbyId("serverHead").innerHTML = "Edit influxDB_v1 Uploader";
+                    EbyId("serverHead").innerHTML = "Modifier influxDB_v1 Uploader";
                     EbyId("serverDelete").style.display = "inline";
                     EbyId("serverDelete").setAttribute("onclick", "serverDelete();");
                 } else {
-                    EbyId("serverHead").innerHTML = "Add influxDB_v1 Uploader";
+                    EbyId("serverHead").innerHTML = "Ajouter influxDB_v1 Uploader";
                     serverConfig = {
                         type: "influxdb",
                         revision: 0,
@@ -2387,11 +2389,11 @@
             } else { // version 2
                 if (serverConfig !== undefined) {
                     serverConfig.revision++;
-                    EbyId("serverHead").innerHTML = "Edit influxDB_v2 Uploader";
+                    EbyId("serverHead").innerHTML = "Modifier influxDB_v2 Uploader";
                     EbyId("serverDelete").style.display = "inline";
                     EbyId("serverDelete").setAttribute("onclick", "serverDelete();");
                 } else {
-                    EbyId("serverHead").innerHTML = "Add influxDB_v2 Uploader";
+                    EbyId("serverHead").innerHTML = "Ajouter influxDB_v2 Uploader";
                     serverConfig = {
                         type: "influxdb2",
                         revision: 0,
@@ -2409,7 +2411,7 @@
                 serverConfig.version = 2;
             }
 
-            var postInput = addTableRow(serverTable, "post interval(sec): ", "serverPost", "input", 3);
+            var postInput = addTableRow(serverTable, "Intervalle de temps (sec) :", "serverPost", "input", 3);
             postInput.value = Number(serverConfig.postInterval);
             postInput.setAttribute("onchange", "serverConfig.postInterval = Number(this.value); checkInfluxdb();");
             postInput.setAttribute("style", "width: 40px;");
@@ -2419,7 +2421,7 @@
             postInput.setAttribute("step", "5");
 
             if (isNaN(serverConfig.bulksend)) serverConfig.bulksend = 1;
-            var bulksendInput = addTableRow(serverTable, "bulk send:", "serverBulk", "input", 3);
+            var bulksendInput = addTableRow(serverTable, "Envoi groupé :", "serverBulk", "input", 3);
             bulksendInput.value = Number(serverConfig.bulksend);
             bulksendInput.setAttribute("onchange", "serverConfig.bulksend = Number(this.value); checkInfluxdb();");
             bulksendInput.setAttribute("style", "width: 40px;");
@@ -2428,18 +2430,18 @@
             bulksendInput.setAttribute("max", "10");
             bulksendInput.setAttribute("step", "1");
 
-            var urlInput = addTableRow(serverTable, "server URL:", "serverURL", "input", 60);
+            var urlInput = addTableRow(serverTable, "URL du serveur :", "serverURL", "input", 60);
             urlInput.value = serverConfig.url
             urlInput.setAttribute("oninput", "serverConfig.url = this.value; checkInfluxdb();");
             urlInput.type = "url";
 
             if (version == 1){
-                var dbInput = addTableRow(serverTable, "database:", "serverDb", "input", 16);
+                var dbInput = addTableRow(serverTable, "Base de données :", "serverDb", "input", 16);
                 dbInput.value = serverConfig.database;
                 dbInput.setAttribute("oninput", "serverConfig.database = this.value; checkInfluxdb();");
                 dbInput.placeholder = "required";
 
-                var RetpInput = addTableRow(serverTable, "retention policy", "serverRetp", "input", 16);
+                var RetpInput = addTableRow(serverTable, "Politique de conservation :", "serverRetp", "input", 16);
                 RetpInput.setAttribute("oninput", "serverConfig.retp = this.value; checkInfluxdb();");
                 if (serverConfig.retp !== undefined) {
                     RetpInput.value = serverConfig.retp;
@@ -2449,13 +2451,13 @@
                 RetpInput.placeholder = "optional";
 
                 if (serverConfig.user === undefined) serverConfig.user = "";
-                var userInput = addTableRow(serverTable, "username:", "serverUser", "input", 16);
+                var userInput = addTableRow(serverTable, "Nom d'utilisateur :", "serverUser", "input", 16);
                 userInput.value = serverConfig.user;
                 userInput.setAttribute("oninput", "serverConfig.user = this.value; checkInfluxdb();");
                 userInput.placeholder = "optional";
 
                 if (serverConfig.pwd === undefined) serverConfig.pwd = "";
-                var pwdInput = addTableRow(serverTable, "password:", "serverPwd", "input", 32);
+                var pwdInput = addTableRow(serverTable, "Mot de passe :", "serverPwd", "input", 32);
                 pwdInput.value = serverConfig.pwd;
                 pwdInput.setAttribute("oninput", "serverConfig.pwd = this.value; checkInfluxdb();");
                 pwdInput.setAttribute("type", "password");
@@ -2464,39 +2466,39 @@
             } 
             else { // version 2
             
-                var dbInput = addTableRow(serverTable, "Bucket:", "serverBucket", "input", 16);
+                var dbInput = addTableRow(serverTable, "Bucket :", "serverBucket", "input", 16);
                 dbInput.value = serverConfig.bucket;
                 dbInput.setAttribute("oninput", "serverConfig.bucket = this.value; checkInfluxdb();");
                 dbInput.placeholder = "required";
 
                 if (serverConfig.orgid === undefined) serverConfig.orgid = "";
-                var userInput = addTableRow(serverTable, "Organization ID:", "serverOrgID", "input", 16);
+                var userInput = addTableRow(serverTable, "Identifiant de l'organisation :", "serverOrgID", "input", 16);
                 userInput.value = serverConfig.orgid;
                 userInput.setAttribute("oninput", "serverConfig.orgid = this.value; checkInfluxdb();");
                 userInput.placeholder = "required";
 
                 if (serverConfig.authtoken === undefined) serverConfig.authtoken = "";
-                var tokenInput = addTableRow(serverTable, "Authorization token:", "serverAuthToken", "input", 48);
+                var tokenInput = addTableRow(serverTable, "Jeton d'autorisation :", "serverAuthToken", "input", 48);
                 tokenInput.value = serverConfig.authtoken;
                 tokenInput.setAttribute("oninput", "serverConfig.authtoken = this.value; checkInfluxdb();");
                 tokenInput.setAttribute("type", "password");
                 tokenInput.placeholder = "required";
             }
 
-            var begdateInput = addTableRow(serverTable, "upload history from:", "serverBegd", "input", 16);
+            var begdateInput = addTableRow(serverTable, "Télécharger l'historique à partir du :", "serverBegd", "input", 16);
             begdateInput.setAttribute("oninput",
                 "serverConfig.begdate = new Date(this.value).getTime()/1000 - config.timezone*3600; checkInfluxdb();");
             begdateInput.value = toInputDate(serverConfig.begdate + config.timezone * 3600);
             begdateInput.type = "date";
 
             if (serverConfig.measurement === undefined) serverConfig.measurement = "";
-            var measInput = addTableRow(serverTable, "measurement", "serverMeas", "input", 16);
+            var measInput = addTableRow(serverTable, "Mesure :", "serverMeas", "input", 16);
             measInput.setAttribute("oninput", "serverConfig.measurement = this.value; checkInfluxdb();");
             measInput.value = serverConfig.measurement;
             measInput.placeholder = "default is $name";
 
             if (serverConfig.fieldkey === undefined) serverConfig.fieldkey = "";
-            var fkeyInput = addTableRow(serverTable, "field-key", "serverFkey", "input", 16);
+            var fkeyInput = addTableRow(serverTable, "Clé de champ :", "serverFkey", "input", 16);
             fkeyInput.setAttribute("oninput", "serverConfig.fieldkey = this.value; checkInfluxdb();");
             fkeyInput.value = serverConfig.fieldkey;
             fkeyInput.placeholder = "default is 'value'";
@@ -2505,8 +2507,7 @@
             buildTagSet();
 
             EbyId("divServerOutputs").style.display = "inline";
-            EbyId("serverOutputsHeader").innerHTML = "measurements";
-
+            EbyId("serverOutputsHeader").innerHTML = "Mesures";
             var scriptEdit = {
               table : EbyId("serverOutputs"),
               set : serverConfig.outputs,
@@ -2566,24 +2567,24 @@
 
         function checkInfluxdb() {
             var complete = true;
-            complete &= validateRegex("serverURL", pattern_URL, "Please enter a valid URL.");
+            complete &= validateRegex("serverURL", pattern_URL, "Veuillez saisir une URL valide.");
             if (!validateInput("serverPost")) complete = false;
             if (!validateInput("serverBulk")) complete = false;
             if (serverConfig.version == 1) {
-                complete &= validateRegex("serverDb", pattern_db, "Alphanumeric database name required");
-                complete &= validateRegex("serverRetp", pattern_retp, "Must be Alphanumeric");
-                complete &= validateRegex("serverUser", pattern_user, "Must be Alphanumeric");
-                complete &= validateRegex("serverPwd", pattern_pwd, "Letters, numbers and !@#$%^&*_+?-");
+                complete &= validateRegex("serverDb", pattern_db, "Nom alphanumérique de la base de données obligatoire");
+                complete &= validateRegex("serverRetp", pattern_retp, "Doit être alphanumérique");
+                complete &= validateRegex("serverUser", pattern_user, "Doit être alphanumérique");
+                complete &= validateRegex("serverPwd", pattern_pwd, "Lettres, chiffres et !@#$%^&*_+?-");
                 if (serverConfig.retp == "") serverConfig.retp = undefined;
                 if (serverConfig.user == "") serverConfig.user = undefined;
                 if (serverConfig.pwd == "") serverConfig.pwd = undefined;
             } else {
-                complete &= validateRegex("serverBucket", pattern_bucket, "Alphanumeric._- bucket name required.");
-                complete &= validateRegex("serverOrgID", pattern_org, "16 character hex orgID required.");
-                complete &= validateRegex("serverAuthToken", pattern_token, "88 character authorization token required.");
+                complete &= validateRegex("serverBucket", pattern_bucket, "Alphanumérique._- nom du bucket obligatoire.");
+                complete &= validateRegex("serverOrgID", pattern_org, "16 caractères hexagonaux orgID requis.");
+                complete &= validateRegex("serverAuthToken", pattern_token, "Jeton d'autorisation de 88 caractères requis.");
             }
-            complete &= validateRegex("serverMeas", pattern_meas, "enter a string or $name, $units, if not specified $name will be used.");
-            complete &= validateRegex("serverFkey", pattern_fkey, "enter a string or $name, $units. if not specified, 'value' will be used.");
+            complete &= validateRegex("serverMeas", pattern_meas, "entrer une chaîne ou $name, $units, si non spécifié $name sera utilisé.");
+            complete &= validateRegex("serverFkey", pattern_fkey, "entrez une chaîne de caractères ou $name, $units. si non spécifié, 'value' sera utilisé.");
             if (serverConfig.measurement == "") serverConfig.measurement = undefined;
             if (serverConfig.fieldkey == "") serverConfig.fieldkey = undefined;
             if (!validateInput("serverBegd", false)) complete = false;
@@ -2612,13 +2613,13 @@
                 newRow.appendChild(noteColumn);
                 var editButton = document.createElement("button");
                 editButton.setAttribute("class", "outputEditButton");
-                editButton.appendChild(document.createTextNode("edit"));
+                editButton.appendChild(document.createTextNode("éditer"));
                 editButton.setAttribute("onclick", "influxTagEdit(" + i + ");");
                 selColumn.appendChild(editButton);
                 keyColumn.innerHTML = serverConfig.tagset[i].key;
                 valueColumn.innerHTML = serverConfig.tagset[i].value;
                 if (i == 0) {
-                    noteColumn.innerHTML = "(uniquely identifies this device)";
+                    noteColumn.innerHTML = "(identifie de manière unique ce dispositif)";
                 }
             }
             var newRow = document.createElement("tr");
@@ -2628,7 +2629,7 @@
             newRow.appendChild(selColumn);
             var editButton = document.createElement("button");
             editButton.setAttribute("class", "outputEditButton");
-            editButton.appendChild(document.createTextNode("add"));
+            editButton.appendChild(document.createTextNode("ajouter"));
             editButton.setAttribute("onclick", "influxTagAdd(" + serverConfig.tagset.length + ")");
             selColumn.appendChild(editButton);
         }
@@ -2707,39 +2708,39 @@
                     outputs: []
                 };
                 EbyId("serverDelete").style.display = "none";
-                EbyId("serverHead").innerHTML = "Add PVOutput Service";
+                EbyId("serverHead").innerHTML = "Ajouter le service PVOutput";
             } else {
                 config.pvoutput.revision++;
-                EbyId("serverHead").innerHTML = "Edit PVOutput Service";
+                EbyId("serverHead").innerHTML = "Modifier le service PVOutput";
                 EbyId("serverDelete").style.display = "inline";
                 EbyId("serverDelete").setAttribute("onclick", "deletePVOutput();");
             }
 
-            var keyInput = addTableRow(serverTable, "API Key:", "apiKey", "input", 40);
+            var keyInput = addTableRow(serverTable, "Clé API :", "apiKey", "input", 40);
             keyInput.value = config.pvoutput.apikey;
             keyInput.setAttribute("oninput", "config.pvoutput.apikey = this.value; checkPVOutput();");
             keyInput.setAttribute("size", "40");
             keyInput.setAttribute("type", "password");
             keyInput.pattern = "[0-9a-f]{40}";
-            keyInput.title = "read/write key - 40 hexadecimal digits";
-            addTableText(serverTable, "", "See <a href=\"https://pvoutput.org/account.jsp\">https://pvoutput.org/account.jsp</a>")
+            keyInput.title = "clé de lecture/écriture - 40 chiffres hexadécimaux";
+            addTableText(serverTable, "", "Consulter <a href=\"https://pvoutput.org/account.jsp\">https://pvoutput.org/account.jsp</a>")
 
-            var systemInput = addTableRow(serverTable, "System ID: ", "systemId", "input", 7);
+            var systemInput = addTableRow(serverTable, "ID du système : ", "systemId", "input", 7);
             systemInput.value = config.pvoutput.systemid;
             systemInput.setAttribute("oninput", "config.pvoutput.systemid = this.value; checkPVOutput();");
             systemInput.setAttribute("style", "width: 100px;");
             systemInput.pattern = "^[1-9]{1}[0-9]*";
-            systemInput.title = "System ID number - all digits";
-            addTableText(serverTable, "", "See <a href=\"https://pvoutput.org/addsystem.jsp\">https://pvoutput.org/addsystem.jsp</a>");
+            systemInput.title = "Numéro d'identification du système - tous les chiffres";
+            addTableText(serverTable, "", "Consulter <a href=\"https://pvoutput.org/addsystem.jsp\">https://pvoutput.org/addsystem.jsp</a>");
 
-            var begdateInput = addTableRow(serverTable, "upload history from:", "serverBegd", "input", 16);
+            var begdateInput = addTableRow(serverTable, "Télécharger l'historique à partir du :", "serverBegd", "input", 16);
             begdateInput.setAttribute("oninput",
                 "config.pvoutput.begdate = (this.value == '') ? undefined : new Date(this.value).getTime()/1000; checkPVOutput();");
             begdateInput.value = toInputDate(config.pvoutput.begdate);
             begdateInput.type = "date";
 
-            var reload = addTableRow(serverTable, "Reload History", "reload", "input");
-            addInfo(reload, "Will ovewrite existing data, may take hours to complete.");
+            var reload = addTableRow(serverTable, "Historique des recharges", "reload", "input");
+            addInfo(reload, "Les données existantes seront écrasées, ce qui peut prendre des heures.");
             reload.setAttribute("type", "checkbox");
             reload.setAttribute("onchange", "config.pvoutput.reload = this.checked; checkPVOutput();");
             if (config.pvoutput.reload != undefined && config.pvoutput.reload) {
@@ -2747,7 +2748,7 @@
             }
 
             EbyId("divServerOutputs").style.display = "inline";
-            EbyId("serverOutputsHeader").innerHTML = "Status Outputs";
+            EbyId("serverOutputsHeader").innerHTML = "Statut des sorties";
 
             var scriptEdit = {
               table : EbyId("serverOutputs"),
@@ -2833,22 +2834,22 @@
             var statusTable = EbyId("statusTableL");
             statusTable.innerHTML = null;
             addRow();
-            column3.appendChild(document.createTextNode("Firmware version: " + status.stats.version));
+            column3.appendChild(document.createTextNode("Version du firmware : " + status.stats.version));
             addRow();
-            column3.appendChild(document.createTextNode("Running time: " + formatRunTime(status.stats.runseconds)));
+            column3.appendChild(document.createTextNode("Durée d'exécution : " + formatRunTime(status.stats.runseconds)));
             addRow();
-            column3.appendChild(document.createTextNode("free Heap: " + status.stats.stack));
+            column3.appendChild(document.createTextNode("Tas libre : " + status.stats.stack));
             if (status.stats.lowbat !== undefined && status.stats.lowbat) {
                 addRow();
-                column3.appendChild(document.createTextNode("RTC battery is low."));
+                column3.appendChild(document.createTextNode("La pile RTC est faible."));
             }
 
             statusTable = EbyId("statusTableR");
             statusTable.innerHTML = null;
             addRow();
-            column3.appendChild(document.createTextNode(status.stats.cyclerate.toFixed(0) + " samples per AC cycle"));
+            column3.appendChild(document.createTextNode(status.stats.cyclerate.toFixed(0) + " échantillons par cycle CA"));
             addRow();
-            column3.appendChild(document.createTextNode(status.stats.chanrate.toFixed(1) + " AC cycles sampled/second"));
+            column3.appendChild(document.createTextNode(status.stats.chanrate.toFixed(1) + " cycles alternatifs échantillonnés/seconde"));
             addRow();
             column3.appendChild(document.createTextNode(status.stats.frequency.toFixed(1) + " Hz"));
 
@@ -2856,9 +2857,9 @@
                 EbyId("tabWifi").style.display = "inline";
                 wifiStatus = EbyId("tableWifi");
                 wifiStatus.innerHTML = "<tr><th width=\"50%\"></th><th width=\"50%\"></th></tr>";
-                wifiStatus.innerHTML += "<tr><td>SSID: " + status.wifi.SSID + "</td><td>IP: " + status.wifi.IP + "</td></tr>";
-                wifiStatus.innerHTML += "<tr><td>channel: " + status.wifi.channel + "</td><td>RSSI: " + status.wifi.RSSI + "</td></tr>";
-                wifiStatus.innerHTML += "<tr><td>MAC: " + status.wifi.mac + "</td><td>connected: " + formatRunTime(status.stats.currenttime - status.wifi.connecttime) + "</td></tr>";
+                wifiStatus.innerHTML += "<tr><td>SSID : " + status.wifi.SSID + "</td><td>IP : " + status.wifi.IP + "</td></tr>";
+                wifiStatus.innerHTML += "<tr><td>Canal : " + status.wifi.channel + "</td><td>RSSI : " + status.wifi.RSSI + "</td></tr>";
+                wifiStatus.innerHTML += "<tr><td>MAC : " + status.wifi.mac + "</td><td>Connecté : " + formatRunTime(status.stats.currenttime - status.wifi.connecttime) + "</td></tr>";
             }
 
             if (status.datalogs !== undefined) {
@@ -2886,12 +2887,12 @@
                 button.disabled = false;
                 if (status.influx1.status == "running") {
                     button.innerHTML = "Stop";
-                    EbyId("influx1text").innerHTML = "Running"
+                    EbyId("influx1text").innerHTML = "En cours"
                 } else {
                     button.innerHTML = "Start";
-                    EbyId("influx1text").innerHTML = "Stopped"
+                    EbyId("influx1text").innerHTML = "Arrêté"
                 }
-                EbyId("influx1text").innerHTML += ", Last update " + formatDateTime(status.influx1.lastpost);
+                EbyId("influx1text").innerHTML += ", Dernière mise à jour " + formatDateTime(status.influx1.lastpost);
                 EbyId("influx1msg").innerHTML = "";
                 if (status.influx1.message) {
                     EbyId("influx1msg").innerHTML = "<br>" + status.influx1.message;
@@ -2909,12 +2910,12 @@
                 button.disabled = false;
                 if (status.influx2.status == "running") {
                     button.innerHTML = "Stop";
-                    EbyId("influx2text").innerHTML = "Running"
+                    EbyId("influx2text").innerHTML = "En cours"
                 } else {
                     button.innerHTML = "Start";
-                    EbyId("influx2text").innerHTML = "Stopped"
+                    EbyId("influx2text").innerHTML = "Arrêté"
                 }
-                EbyId("influx2text").innerHTML += ", Last update " + formatDateTime(status.influx2.lastpost);
+                EbyId("influx2text").innerHTML += ", Dernière mise à jour " + formatDateTime(status.influx2.lastpost);
                 EbyId("influx2msg").innerHTML = "";
                 if (status.influx2.message) {
                     EbyId("influx2msg").innerHTML = "<br>" + status.influx2.message;
@@ -2931,12 +2932,12 @@
                 button.disabled = false;
                 if (status.emoncms.status == "running") {
                     button.innerHTML = "Stop";
-                    EbyId("Emoncmstext").innerHTML = "Running"
+                    EbyId("Emoncmstext").innerHTML = "En cours"
                 } else {
                     button.innerHTML = "Start";
-                    EbyId("Emoncmstext").innerHTML = "Stopped"
+                    EbyId("Emoncmstext").innerHTML = "Arrêté"
                 }
-                EbyId("Emoncmstext").innerHTML += ", Last update " + formatDateTime(status.emoncms.lastpost);
+                EbyId("Emoncmstext").innerHTML += ", Dernière mise à jour " + formatDateTime(status.emoncms.lastpost);
                 EbyId("Emoncmsmsg").innerHTML = "";
                 if (status.emoncms.message) {
                     EbyId("Emoncmsmsg").innerHTML = "<br>" + status.emoncms.message;
@@ -2953,12 +2954,12 @@
                 button.disabled = false;
                 if (status.pvoutput.status == "running") {
                     button.innerHTML = "Stop";
-                    EbyId("PVoutputtext").innerHTML = "Running"
+                    EbyId("PVoutputtext").innerHTML = "En cours"
                 } else {
                     button.innerHTML = "Start";
-                    EbyId("PVoutputtext").innerHTML = "Stopped"
+                    EbyId("PVoutputtext").innerHTML = "Arrêté"
                 }
-                EbyId("PVoutputtext").innerHTML += ", Last update " + formatDateTime(status.pvoutput.lastpost);
+                EbyId("PVoutputtext").innerHTML += ", Dernière mise à jour " + formatDateTime(status.pvoutput.lastpost);
                 EbyId("PVoutputmsg").innerHTML = "";
                 if (status.pvoutput.message) {
                     EbyId("PVoutputmsg").innerHTML = "<br>" + status.pvoutput.message;
@@ -3260,7 +3261,7 @@
                     noConfig = false;
                     checkConfig();
                     document.title = config.device.name;
-                    EbyId("heading").innerHTML = config.device.name + " Power Monitor";
+                    EbyId("heading").innerHTML = "Moniteur de puissance " + config.device.name;
                     if (callback !== undefined) callback();
                     EbyId("mainMenu").style.display = "block";
                 }
