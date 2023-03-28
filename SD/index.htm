@@ -337,7 +337,7 @@
 
                         <div id="statusInflux1Div" class="statusDiv" style="display: none;">
                             <button id="influx1Button" style="configButton" value="influxdb" onclick="serverToggle(this)"></button>
-                            <span>influxDB1:</span>
+                            <span>influxDB1 :</span>
                             <span id="influx1text"></span>
                             <span id="influx1msg"></span>
 
@@ -345,7 +345,7 @@
 
                         <div id="statusInflux2Div" class="statusDiv" style="display: none;">
                             <button id="influx2Button" style="configButton" value="influxdb2" onclick="serverToggle(this)"></button>
-                            <span>influxDB2:</span>
+                            <span>influxDB2 :</span>
                             <span id="influx2text"></span>
                             <span id="influx2msg"></span>
 
@@ -353,7 +353,7 @@
 
                         <div id="statusEmoncmsDiv" class="statusDiv" style="display: none;">
                             <button id="EmoncmsButton" style="configButton" value="emoncms" onclick="serverToggle(this)"></button>
-                            <span>Emoncms:</span>
+                            <span>Emoncms :</span>
                             <span id="Emoncmstext"></span>
                             <span id="Emoncmsmsg"></span>
 
@@ -361,7 +361,7 @@
 
                         <div id="statusPVoutDiv" class="statusDiv" style="display: none;">
                             <button id="PVoutputButton" style="configButton" value="pvoutput" onclick="serverToggle(this)"></button>
-                            <span>PVoutput:</span>
+                            <span>PVoutput :</span>
                             <span id="PVoutputtext"></span>
                             <span id="PVoutputmsg"></span>
 
@@ -387,8 +387,8 @@
                     Utilisez cet outil pour vous déconnecter définitivement du réseau Wi-Fi actuel.<br>
                 </p>
                 <h3 id="WiFiMsg"></h3>
-                <button id="WiFiButton" class="actionDelete" onclick="sendDisconnect()">Disconnect</button>
-                <button class="actionCancel" onclick="currentBodyPop()">cancel</button>
+                <button id="WiFiButton" class="actionDelete" onclick="sendDisconnect()">Déconnecter</button>
+                <button class="actionCancel" onclick="currentBodyPop()">Annuler</button>
             </div>
 
             <!-- ****************************** Restart **********************************-->
@@ -1078,7 +1078,7 @@
             table.innerHTML = "";
             EbyId("inputChannel").innerHTML = "Configurer l'entrée " + inputEditChannel;
 
-            var newInput = addTableRow(table, "Charge :", "inputBurden", "span");
+            var newInput = addTableRow(table, "Charge : ", "inputBurden", "span");
             if (config.device.burden[inputEditChannel] == 0) inputBurden.innerHTML = "aucune configurée.";
             else if (Number.isInteger(config.device.burden[inputEditChannel])) inputBurden.innerHTML = config.device.burden[inputEditChannel].toFixed(0) + " ohms";
             else inputBurden.innerHTML = config.device.burden[inputEditChannel].toFixed(1) + " ohms";
@@ -1099,7 +1099,7 @@
             for (i in config.inputs) {
                 if (i != inputEditChannel && config.inputs[i] !== null && config.inputs[i].name == inputName.value) {
                     inputName.parentNode.appendChild(document.createElement("br"));
-                    keyInput.parentNode.appendChild(document.createTextNode(" La clé API doit être composée de 16 chiffres hexagonaux."));
+                    keyInput.parentNode.appendChild(document.createTextNode(" La clé API doit être composée de 16 caractères hexadécimaux."));
                     inputEditMsg(inputName, "Nom déjà utilisé pour le canal " + inputEditChannel);
                     complete = false;
                 }
@@ -2283,7 +2283,7 @@
             keyInput.setAttribute("type", "password");
             keyInput.size = 32;
             keyInput.pattern = "[0-9a-f]{32}";
-            keyInput.title = "clé de lecture/écriture - 32 chiffres hexadécimaux";
+            keyInput.title = "clé de lecture/écriture - 32 caractères hexadécimaux";
 
             addTableText(serverTable, "", "La spécification de l'identifiant déclenche un protocole crypté sécurisé.")
             var keyInput = addTableRow(serverTable, "Identifiant Emoncms :", "serverUser", "input", 10);
@@ -2580,7 +2580,7 @@
                 if (serverConfig.pwd == "") serverConfig.pwd = undefined;
             } else {
                 complete &= validateRegex("serverBucket", pattern_bucket, "Alphanumérique._- nom du bucket obligatoire.");
-                complete &= validateRegex("serverOrgID", pattern_org, "16 caractères hexagonaux orgID requis.");
+                complete &= validateRegex("serverOrgID", pattern_org, "16 caractères hexadécimaux orgID requis.");
                 complete &= validateRegex("serverAuthToken", pattern_token, "Jeton d'autorisation de 88 caractères requis.");
             }
             complete &= validateRegex("serverMeas", pattern_meas, "entrer une chaîne ou $name, $units, si non spécifié $name sera utilisé.");
@@ -2722,7 +2722,7 @@
             keyInput.setAttribute("size", "40");
             keyInput.setAttribute("type", "password");
             keyInput.pattern = "[0-9a-f]{40}";
-            keyInput.title = "clé de lecture/écriture - 40 chiffres hexadécimaux";
+            keyInput.title = "clé de lecture/écriture - 40 caractères hexadécimaux";
             addTableText(serverTable, "", "Consulter <a href=\"https://pvoutput.org/account.jsp\">https://pvoutput.org/account.jsp</a>")
 
             var systemInput = addTableRow(serverTable, "ID du système : ", "systemId", "input", 7);
@@ -2858,22 +2858,22 @@
                 wifiStatus = EbyId("tableWifi");
                 wifiStatus.innerHTML = "<tr><th width=\"50%\"></th><th width=\"50%\"></th></tr>";
                 wifiStatus.innerHTML += "<tr><td>SSID : " + status.wifi.SSID + "</td><td>IP : " + status.wifi.IP + "</td></tr>";
-                wifiStatus.innerHTML += "<tr><td>Canal : " + status.wifi.channel + "</td><td>RSSI : " + status.wifi.RSSI + "</td></tr>";
-                wifiStatus.innerHTML += "<tr><td>MAC : " + status.wifi.mac + "</td><td>Connecté : " + formatRunTime(status.stats.currenttime - status.wifi.connecttime) + "</td></tr>";
+                wifiStatus.innerHTML+= "<tr><td>Canal : " + status.wifi.channel + "</td><td>RSSI : " + status.wifi.RSSI + "</td></tr>";
+                wifiStatus.innerHTML += "<tr><td>MAC : " + status.wifi.mac + "</td><td>Connecté : " + formatRunTime(status.stats.runseconds - status.wifi.connecttime) + "</td></tr>";
             }
 
             if (status.datalogs !== undefined) {
                 var logtab = EbyId("statusLogsTable");
                 logtab.innerHTML = null;
                 for (i in status.datalogs) {
-                    var units = ["", "KB", "MB", "GB"];
+                    var units = ["", "Ko", "Mo", "Go"];
                     var size = status.datalogs[i].size;
                     var u = 0;
                     while (size > 1024) {
                         size /= 1024;
                         u++;
                     }
-                    logtab.innerHTML += "<tr><td>" + status.datalogs[i].id + " Log:</td>" +
+                    logtab.innerHTML += "<tr><td>" + status.datalogs[i].id + " Journal :</td>" +
                         "<td>" + fixedDateTime(status.datalogs[i].firstkey) + " - " + fixedDateTime(status.datalogs[i].lastkey) + "</td>" +
                         "<td>" + size.toPrecision(4) + " " + units[u] + "</td></tr>";
                 }
@@ -2973,12 +2973,11 @@
             statusTable.innerHTML = "";
             for (i in status.inputs) {
                 addRow();
-
                 for (j in config.inputs) {
                     if (config.inputs[j] !== null && config.inputs[j].channel == status.inputs[i].channel) {
                         if (status.inputs[i].reversed) column1.innerHTML += "<span title=\"CT reversed\">&#8634 </span>";
                         if (config.inputs[j].name !== undefined) {
-                            column1.innerHTML += "<strong>" + config.inputs[j].name + ":</strong>";
+                            column1.innerHTML += "<strong>[" + config.inputs[j].channel + "] " + config.inputs[j].name + " :</strong>";
                         }
                         break;
                     }
@@ -2987,7 +2986,7 @@
 
                 if (status.inputs[i].Watts !== undefined) {
                     var wattNode = document.createElement("font");
-                    wattNode.innerHTML = status.inputs[i].Watts + "&nbsp;" + "Watts";
+                    wattNode.innerHTML = status.inputs[i].Watts + "&nbsp;" + "W";
                     column3.appendChild(wattNode);
 
                     if (status.inputs[i].reversed == "true") {
@@ -3005,17 +3004,18 @@
                     }
 
                 } else if (status.inputs[i].Vrms !== undefined) {
-                    column3.appendChild(document.createTextNode(status.inputs[i].Vrms.toFixed(1) + " Volts"));
+                    column3.appendChild(document.createTextNode(status.inputs[i].Vrms.toFixed(1) + " V"));
                 }
             }
 
             statusTable = EbyId("outputStatusTable");
             statusTable.innerHTML = "";
+            unitsO = {"Watts": "W", "Volts": "V", "Amps": "A", "Hz": "Hz", "PF": "%", "VA": "VA", "Wh": "Wh", "kWh": "kWh", "VAR": "VAR", "VARh": "VARh"};
             for (i in status.outputs) {
                 addRow();
                 column1.innerHTML += "<strong>" + status.outputs[i].name + ":</strong>";
                 var wattNode = document.createElement("font");
-                wattNode.innerHTML = status.outputs[i].value.toFixed(unitsPrecision(status.outputs[i].units)) + " " + status.outputs[i].units;
+                wattNode.innerHTML = status.outputs[i].value.toFixed(unitsPrecision(status.outputs[i].units)) + " " + unitsO[status.outputs[i].units];
                 column3.appendChild(wattNode);
             }
 
