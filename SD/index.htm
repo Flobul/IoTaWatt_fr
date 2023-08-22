@@ -60,7 +60,7 @@
                 title="Afficher les entrées récentes dans le journal des messages">Journal des messages</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,toolsWiFi)">Wi-Fi</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,toolsRestart)"
-                title="Redémarrer l'IoTaWatt">Rédémarrer</button>
+                title="Redémarrer l'IoTaWatt">Redémarrer</button>
                 
       <!-- <button class="mainMenuButton" onclick="mainMenuButton(this,toolsDatalogs)">Datalogs</button>
             <button class="mainMenuButton" onclick="mainMenuButton(this,toolsUpdate)">Software Update</button> 
@@ -417,12 +417,12 @@
                 <button id="logsTab" class="groupTab" onclick="toggleDisplay('logsDelete')">Fonctions de suppression de l'enregistrement des données</button>
                 <div id="logsDelete" style="display:none">
                     <h3>Supprimer les enregistrements de données</h3>
-                    <h3>Les journaux supprimés ne peuvent pas être récupérés!</h3>
+                    <h3>Les journaux supprimés ne peuvent pas être récupérés !</h3>
                     <p>
                         C'est le seul moyen sûr de supprimer les journaux de données.<br> L'IoTaWatt va redémarrer.<br>
                     </p>
                     <p>
-                        <button onclick="toolsDataLogsDelete('current')">Supprimer le journal actuel</button> un nouveau journal sera créé à partir de maintenant.<br>
+                        <button onclick="toolsDataLogsDelete('current')">Supprimer le journal temps réel</button> un nouveau journal sera créé à partir de maintenant.<br>
                     </p>
                     <p>
                         <button onclick="toolsDataLogsDelete('history')">Supprimer le journal historique</button> un nouvel historique sera construit à partir de l'historique actuel.<br>
@@ -920,7 +920,7 @@
             xmlHttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var status = JSON.parse(xmlHttp.responseText);
-                    EbyId("logsTable").innerHTML = "<tr><th>Attribut</th><th>Journal actuel</th><th>Journal historique</th></tr>";
+                    EbyId("logsTable").innerHTML = "<tr><th>Attribut</th><th>Journal temps réel</th><th>Journal historique</th></tr>";
                     formatLine("Date de début", formatDateTime(status.datalogs.currlog.firstkey), formatDateTime(status.datalogs.histlog.firstkey));
                     formatLine("Date de fin", formatDateTime(status.datalogs.currlog.lastkey), formatDateTime(status.datalogs.histlog.lastkey));
                     formatLine("Taille de fichier", status.datalogs.currlog.size, status.datalogs.histlog.size);
@@ -962,7 +962,7 @@
             var msg = EbyId("logsMsg");
             msg.innerHTML = "Vous êtes sur le point de supprimer définitivement le ";
             if (log == "current") {
-                msg.innerHTML += "journal actuel.";
+                msg.innerHTML += "journal temps réel.";
                 EbyId("logsConfirm").setAttribute("onclick", "toolsDataLogsCommit('current')");
             } else if (log == "history") {
                 msg.innerHTML += "journal historique.";
@@ -2739,7 +2739,7 @@
             begdateInput.value = toInputDate(config.pvoutput.begdate);
             begdateInput.type = "date";
 
-            var reload = addTableRow(serverTable, "Historique des recharges", "reload", "input");
+            var reload = addTableRow(serverTable, "Recharger l'historique", "reload", "input");
             addInfo(reload, "Les données existantes seront écrasées, ce qui peut prendre des heures.");
             reload.setAttribute("type", "checkbox");
             reload.setAttribute("onchange", "config.pvoutput.reload = this.checked; checkPVOutput();");
